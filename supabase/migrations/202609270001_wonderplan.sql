@@ -56,7 +56,7 @@ create index if not exists activities_city_idx on public.activities(city);
 create index if not exists activities_status_verification_idx on public.activities(status, verification_status);
 create index if not exists activities_location_gix on public.activities using gist(location);
 create index if not exists activities_tags_gin on public.activities using gin(tags);
-create unique index if not exists activities_dedupe_idx on public.activities (lower(title), lower(coalesce(venue_name, '')), coalesce(start_at::date, 'infinity'::date));
+create unique index if not exists activities_dedupe_idx on public.activities (lower(title), lower(coalesce(venue_name, '')), coalesce(start_at, 'infinity'::timestamptz));
 
 create table if not exists public.saved_activities (
   child_id uuid not null references public.children(id) on delete cascade,

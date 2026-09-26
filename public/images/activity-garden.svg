@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">A sunny outdoor idea</title><desc id="desc">Soft green hills, a bright sun and simple trees.</desc>
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#e7eddd"/><stop offset="1" stop-color="#c7dfcf"/></linearGradient></defs>
+  <rect width="1200" height="620" fill="url(#sky)"/><circle cx="910" cy="145" r="78" fill="#f4c95d"/>
+  <path d="M0 400q200-160 420-40t380 5q205-132 400 0v255H0Z" fill="#afcaa8"/><path d="M0 488q220-113 430 6t400-4q191-86 370 6v124H0Z" fill="#71977b"/>
+  <g fill="#527d62"><path d="M201 423h20v104h-20z"/><circle cx="211" cy="384" r="63"/><path d="M986 407h19v103h-19z"/><circle cx="996" cy="365" r="60"/></g>
+  <g fill="#fffefa" opacity=".82"><circle cx="520" cy="166" r="7"/><circle cx="566" cy="206" r="5"/><circle cx="746" cy="125" r="6"/></g>
+</svg>

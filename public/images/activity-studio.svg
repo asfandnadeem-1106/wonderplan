@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">A creative family activity</title><desc id="desc">A paper plane, colored shapes and a warm studio palette.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f2e5d9"/><stop offset="1" stop-color="#e6d8c9"/></linearGradient></defs>
+  <rect width="1200" height="620" fill="url(#bg)"/><circle cx="950" cy="145" r="86" fill="#d89573" opacity=".62"/>
+  <rect x="260" y="176" width="680" height="315" rx="28" fill="#fffefa" opacity=".74" transform="rotate(-4 600 333)"/>
+  <path d="m390 340 320-118-124 166-43-65-153 17z" fill="#174e41"/><path d="m543 323 167-101-124 166-43-65z" fill="#6c9a84"/>
+  <circle cx="370" cy="218" r="23" fill="#f4c95d"/><circle cx="837" cy="426" r="26" fill="#8e9db6"/><path d="M495 454q90-85 178 0" fill="none" stroke="#d89573" stroke-width="18" stroke-linecap="round"/>
+</svg>

@@ -3,8 +3,11 @@
   "short_name": "WonderPlan",
   "description": "Find thoughtful things to do with your family.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#fbfaf6",
   "theme_color": "#fbfaf6",
-  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }],
+  "categories": ["lifestyle", "family"]
 }

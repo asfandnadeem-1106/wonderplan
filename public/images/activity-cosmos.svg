@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">A curious look at the sky</title><desc id="desc">A twilight sky with gentle stars, a moon and a family looking upward.</desc>
+  <defs><linearGradient id="night" x2="0" y2="1"><stop stop-color="#dce3ef"/><stop offset="1" stop-color="#bdccdf"/></linearGradient></defs>
+  <rect width="1200" height="620" fill="url(#night)"/><circle cx="911" cy="149" r="75" fill="#f4c95d"/><circle cx="940" cy="125" r="65" fill="#dce3ef"/>
+  <g fill="#fffefa"><path d="m325 140 8 20 21 8-21 8-8 20-8-20-21-8 21-8z"/><path d="m740 240 6 14 15 6-15 6-6 14-6-14-15-6 15-6z"/><circle cx="531" cy="143" r="6"/><circle cx="633" cy="187" r="5"/></g>
+  <path d="M0 475q220-126 420-25t380 2q210-118 400-2v170H0Z" fill="#809b96"/><path d="M0 540q210-70 415 9t390-2q200-75 395 8v65H0Z" fill="#587d74"/>
+  <g fill="#26352f"><circle cx="500" cy="444" r="26"/><path d="M469 473h62l25 114h-33l-22-67-21 67h-34z"/><circle cx="589" cy="466" r="20"/><path d="M566 488h48l19 92h-26l-18-53-15 53h-26z"/></g>
+</svg>
