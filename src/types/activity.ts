@@ -8,8 +8,10 @@ export interface ActivityRecommendation {
   format: string;
   ageGuidance: string;
   reason: string;
-  matchScore: number;
+  matchScore: number | null;
   sample: boolean;
+  sourceName?: string;
+  statusMessage?: string;
 }
 
 export interface Activity {
@@ -25,7 +27,7 @@ export interface Activity {
   distanceKm: number | null;
   ageRange: { min: number; max: number } | null;
   price: { amount: number; currency: string } | null;
-  matchPercentage: number;
+  matchPercentage: number | null;
   matchReasons: string[];
   source: { name: string; url: string | null };
   verificationStatus: 'MOCK' | 'VERIFIED' | 'LIKELY_VALID' | 'UNVERIFIED' | 'EXPIRED' | 'CANCELLED';

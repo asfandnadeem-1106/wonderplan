@@ -1,3 +1,4 @@
+import { getActivityById } from '../services/activityService';
 import { getMockActivityById } from '../services/mockActivityService';
 import type { Activity } from '../types/activity';
 import { ActivityHero } from './ActivityHero';
@@ -34,7 +35,8 @@ function detailMarkup(activity: Activity): string {
 
 export function mountActivityDetailScreen(root: HTMLElement, activityId: string): void {
   root.innerHTML = loadingMarkup();
-  void getMockActivityById(activityId).then((activity) => {
+  void getActivityById(activityId).then(async (liveActivity) => {
+    const activity = liveActivity ?? await getMockActivityById(activityId);
     if (!activity) {
       root.innerHTML = notFoundMarkup();
       return;

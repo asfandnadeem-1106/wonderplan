@@ -3,15 +3,17 @@ import type { ChildProfilePreview } from '../types/activity';
 import { AIPlannerHero } from '../components/AIPlannerHero';
 import { ChildSwitcher } from '../components/ChildSwitcher';
 import { RecommendationSection } from '../components/RecommendationSection';
+import { getVerifiedActivityRecommendations } from '../services/activityService';
 
 type ScreenState = 'loading' | 'ready';
 
 export function mountHomeScreen(root: HTMLElement): void {
   let activeChild = mockChildren[0];
   const savedIds = new Set<string>();
+  let verifiedActivities = [] as Awaited<ReturnType<typeof getVerifiedActivityRecommendations>>;
 
   const render = (screenState: ScreenState): void => {
-    root.innerHTML = homeMarkup(activeChild, savedIds, screenState);
+    root.innerHTML = homeMarkup(activeChild, savedIds, screenState, verifiedActivities);
   };
 
   root.addEventListener('click', (event) => {
@@ -39,7 +41,7 @@ export function mountHomeScreen(root: HTMLElement): void {
       else savedIds.delete(activityId);
       saveButton.classList.toggle('is-saved', saved);
       saveButton.setAttribute('aria-pressed', String(saved));
-      const activity = [...mockRecommendations[activeChild.id], ...weekendIdeas, ...newIdeas].find((item) => item.id === activityId);
+      const activity = [...verifiedActivities, ...mockRecommendations[activeChild.id], ...weekendIdeas, ...newIdeas].find((item) => item.id === activityId);
       saveButton.setAttribute('aria-label', `${saved ? 'Remove from saved ideas' : 'Save idea'}: ${activity?.title ?? 'activity'}`);
       saveButton.innerHTML = `<span aria-hidden="true">${saved ? '♥' : '♡'}</span>`;
       const announcement = root.querySelector<HTMLElement>('#home-announcement');
@@ -61,10 +63,13 @@ export function mountHomeScreen(root: HTMLElement): void {
   });
 
   render('loading');
-  window.setTimeout(() => render('ready'), 450);
+  void getVerifiedActivityRecommendations()
+    .then((activities) => { verifiedActivities = activities; })
+    .catch(() => { verifiedActivities = []; })
+    .finally(() => render('ready'));
 }
 
-function homeMarkup(child: ChildProfilePreview, savedIds: Set<string>, screenState: ScreenState): string {
+function homeMarkup(child: ChildProfilePreview, savedIds: Set<string>, screenState: ScreenState, verifiedActivities: Awaited<ReturnType<typeof getVerifiedActivityRecommendations>>): string {
   const reason = child.id === 'adam' ? 'Because he loves aircraft.' : 'Because she loves animals, art, and nature.';
   const childRecommendations = mockRecommendations[child.id] ?? [];
 
@@ -79,6 +84,7 @@ function homeMarkup(child: ChildProfilePreview, savedIds: Set<string>, screenSta
 
     <div class="sample-data-note" role="note"><span aria-hidden="true">✳</span><p><strong>Sample ideas for preview</strong><br>These are mock suggestions, not verified local listings. Check official sources for dates, access, and other details.</p></div>
 
+    ${verifiedActivities.length ? RecommendationSection({ id: 'verified-activities', title: 'Verified activities', subtitle: 'Published listings checked against their sources.', activities: verifiedActivities, savedIds }) : ''}
     ${RecommendationSection({ id: 'for-child', title: `For ${child.name}`, subtitle: reason, activities: childRecommendations, savedIds, state: screenState })}
     ${RecommendationSection({ id: 'this-weekend', title: 'This weekend', subtitle: 'Flexible ideas to shape around your family.', activities: weekendIdeas, savedIds, state: screenState })}
     ${RecommendationSection({ id: 'try-something-new', title: 'Try something new', subtitle: 'A few fresh ways to follow a favourite curiosity.', activities: newIdeas, savedIds, state: screenState })}

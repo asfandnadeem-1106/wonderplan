@@ -24,7 +24,7 @@ The service worker is registered only in production. Build with `npm run build`;
 
 ## Backend foundation
 
-A Supabase schema migration is in [`supabase/migrations/202609270001_wonderplan.sql`](supabase/migrations/202609270001_wonderplan.sql) and has been applied to the configured Supabase project. The `activities` API responds successfully and is empty. The current frontend still uses mock services; authentication and database-backed family/activity flows have not been wired into the UI yet. Never put a Supabase service-role key in browser code.
+A Supabase schema migration is in [`supabase/migrations/202609270001_wonderplan.sql`](supabase/migrations/202609270001_wonderplan.sql) and has been applied to the configured Supabase project. The current frontend reads published, verified activity listings from Supabase and keeps clearly labeled sample ideas available while that table is empty. Authentication, family profiles, saved activities and planner persistence are not wired into the UI yet. Never put a Supabase service-role key in browser code.
 
 ## Deployment
 

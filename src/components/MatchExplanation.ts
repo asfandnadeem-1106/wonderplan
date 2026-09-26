@@ -1,6 +1,14 @@
 import type { Activity } from '../types/activity';
 
 export function MatchExplanation(activity: Activity, childName = 'Adam'): string {
+  if (activity.matchPercentage === null) {
+    return `<section class="match-explanation" aria-labelledby="match-explanation-title">
+      <span class="explanation-icon" aria-hidden="true">✦</span>
+      <div><p class="detail-section-eyebrow">A THOUGHTFUL FIT</p><h2 id="match-explanation-title">Why we recommend it</h2>
+        <p>This listing is verified, but a personalized match explanation is not available yet.</p>
+      </div>
+    </section>`;
+  }
   const interests = activity.matchReasons.length ? activity.matchReasons.join(' and ') : 'your family’s interests';
   return `<section class="match-explanation" aria-labelledby="match-explanation-title">
     <span class="explanation-icon" aria-hidden="true">✦</span>
