@@ -24,4 +24,8 @@ The service worker is registered only in production. Build with `npm run build`;
 
 ## Backend foundation
 
-A Supabase schema migration is in [`supabase/migrations/202609270001_wonderplan.sql`](supabase/migrations/202609270001_wonderplan.sql). It has not yet been applied to the remote project. Apply it in the Supabase SQL Editor before enabling backend-backed features. Never put a Supabase service-role key in browser code.
+A Supabase schema migration is in [`supabase/migrations/202609270001_wonderplan.sql`](supabase/migrations/202609270001_wonderplan.sql) and has been applied to the configured Supabase project. The `activities` API responds successfully and is empty. The current frontend still uses mock services; authentication and database-backed family/activity flows have not been wired into the UI yet. Never put a Supabase service-role key in browser code.
+
+## Deployment
+
+The Vite app is deployed on Vercel. `vercel.json` rewrites app routes to `index.html` so direct links to `/home`, `/plan`, and `/activities/[id]` work. Configure `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in Vercel for production and preview builds; these are public client settings, not service-role credentials.
